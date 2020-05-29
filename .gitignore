@@ -1,0 +1,47 @@
+# Compiled python
+*.py[cod]
+__pycache__
+
+# Working folders for Win build
+build/
+dist/
+locale/
+srcdist/
+
+# Snapcraft
+parts/
+prime/
+stage/
+snap/.snapcraft/
+*.snap
+
+# Generated email templates
+email/*.tmpl
+
+# Build results
+SABnzbd*.zip
+SABnzbd*.exe
+SABnzbd*.gz
+SABnzbd*.dmg
+
+# WingIDE/PyCharm project files
+*.wp[ru]
+.idea
+
+# Testing folders
+.cache
+.xprocess
+.pytest*
+tests/cache
+
+# General junk
+*.keep
+*.bak
+*.log
+
+# Some people use Emacs as an editor
+\#*
+.\#*
+
+.DS_Store
+/venv
