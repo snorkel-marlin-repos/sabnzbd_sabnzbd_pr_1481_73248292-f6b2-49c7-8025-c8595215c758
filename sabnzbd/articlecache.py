@@ -155,12 +155,17 @@ class ArticleCache:
     def __flush_article_to_disk(self, article, data):
         nzo = article.nzf.nzo
         if nzo.is_gone():
-            # Don't store deleted jobs
+            # Do not discard this article because the
+            # file might still be processed at this moment!!
             return
 
-        # Save data, but don't complain when destination folder is missing
-        # because this flush may come after completion of the NZO.
-        sabnzbd.save_data(data, article.get_art_id(), nzo.workpath, do_pickle=False, silent=True)
+        art_id = article.get_art_id()
+        if art_id:
+            # Save data, but don't complain when destination folder is missing
+            # because this flush may come after completion of the NZO.
+            sabnzbd.save_data(data, art_id, nzo.workpath, do_pickle=False, silent=True)
+        else:
+            logging.warning("Flushing %s failed -> no art_id", article)
 
 
 # Create the instance
